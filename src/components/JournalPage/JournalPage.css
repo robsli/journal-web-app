@@ -1,0 +1,20 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 200vh;
+  background-color: lightgray;
+}
+.journal-app {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  max-height: 90vh;
+  margin: 16px auto;
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.24);
+}
+.body {
+  display: flex;
+  flex-direction: row;
+  padding: 0 16px;
+}

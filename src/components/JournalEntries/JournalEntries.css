@@ -1,0 +1,74 @@
+.entry-list-component {
+  display: flex;
+  flex: 1 1 60%;
+  flex-direction: column;
+  max-height: inherit;
+  order: 1;
+  padding: 16px 8px;
+  
+  align-items: center;
+  overflow: scroll;
+}
+.entry-cards {
+  border-top: 1px solid lightgray;
+  flex-direction: column;
+  overflow: scroll;
+  width: 100%;
+}
+.entry-card {
+  border-bottom: 1px solid lightgray;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 16px 0;
+  padding: 16px 12px;
+}
+.entry-card-heading {
+  display: flex;
+
+  align-items: center;
+}
+.entry-name {
+  max-width: 60%;
+  padding-right: 8px;
+  order: -1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: left;
+}
+.entry-date {
+  flex: 5 1;
+  min-width: 20%;
+  padding-right: 8px;
+  
+  color: gray;
+  font-size: 0.2em;
+  text-align: left;
+}
+.entry-delete, .entry-update {
+  margin-left: 16px;
+
+  color: lightgray;
+  font-size: 0.6em;
+  text-align: right;
+}
+.entry-delete:hover, .entry-update:hover {
+  color: black;
+  cursor: pointer;
+}
+.entry-notes {
+  margin-top: 20px;
+  max-height: 100px;
+
+  font-family: serif;
+  font-size: 0.8em;
+  font-weight: 200;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
