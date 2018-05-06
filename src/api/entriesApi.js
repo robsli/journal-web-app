@@ -1,5 +1,5 @@
 class EntriesApi {
-  static endpoint = 'http://localhost:3001/';
+  static endpoint = 'https://my-journal-app.herokuapp.com/';
 
   static addEntry(entry) {
     return fetch(`${this.endpoint}addEntry`, {
