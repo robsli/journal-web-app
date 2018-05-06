@@ -4,7 +4,6 @@
       const month = date.getMonth();
       const numDate = date.getDate();
       const day = date.getDay();
-      debugger;
   
       const dayOfWeek = {
         0: 'Sunday',
