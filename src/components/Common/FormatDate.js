@@ -4,15 +4,16 @@
       const month = date.getMonth();
       const numDate = date.getDate();
       const day = date.getDay();
+      debugger;
   
       const dayOfWeek = {
+        0: 'Sunday',
         1: 'Monday',
         2: 'Tuesday',
         3: 'Wednesday',
         4: 'Thursday',
         5: 'Friday',
-        6: 'Saturday',
-        7: 'Sunday'
+        6: 'Saturday'
       }
       const abbreviatedMonth = {
         0: 'Jan',

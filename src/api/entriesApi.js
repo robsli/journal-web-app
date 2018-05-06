@@ -37,7 +37,6 @@ class EntriesApi {
     })
       .then((response) => response.json())
       .then((responseJson) => {
-        debugger;
         return responseJson;
       })
       .catch((error) => {
