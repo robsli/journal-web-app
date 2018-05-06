@@ -82,7 +82,6 @@ class JournalPage extends React.Component {
         }));
       }
     } else if (event.target.className === 'fa fa-times') {
-      console.log(event.target);
       this.setState(prevState => ({
         searchItem: '',
         searchInitiated: false,
@@ -141,8 +140,6 @@ class JournalPage extends React.Component {
         console.log(err);
       });
     }
-
-
     this.toggleView({target: {id: 'showForm'}});
   }
 
@@ -196,16 +193,5 @@ const emptyEntry = {
   name: '',
   notes: ''
 }
-
-// function formatDate(date) {
-//   if (date instanceof Date) {
-//     const year = date.getFullYear();
-//     const month = date.getMonth()+1;
-//     const day = date.getDate();
-
-//     return `${year}-${month}-${day}`
-//   }
-//   return null;  
-// }
 
 export default JournalPage;
