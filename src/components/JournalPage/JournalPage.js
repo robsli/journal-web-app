@@ -48,7 +48,6 @@ class JournalPage extends React.Component {
         currentEntry: Object.assign({}, prevState.currentEntry, {[name]:value})
       }));
     }
-    
   }
 
   handleDelete(entryId, event) {
@@ -71,11 +70,10 @@ class JournalPage extends React.Component {
           searchInitiated: false,
           searchResults: []
         }));
-        console.log('You didn\'t enter anything into the search field. Can\'t search for nothing!');
+        // console.log('You didn\'t enter anything into the search field. Can\'t search for nothing!');
       } else {
-        console.log('You searched for: ' + this.state.searchItem);
         const searchResults = Object.assign([], this.state.journalEntries).filter(entry => {
-          return (entry.dish.toLowerCase().includes(this.state.searchItem.toLowerCase()) || 
+          return (entry.name.toLowerCase().includes(this.state.searchItem.toLowerCase()) || 
                   entry.notes.toLowerCase().includes(this.state.searchItem.toLowerCase()))
         })
         this.setState(prevState => ({
