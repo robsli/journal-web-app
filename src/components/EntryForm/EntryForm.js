@@ -33,9 +33,9 @@ function EntryForm({
               onBlur={ handleFocus }
               onChange={ handleChange }
               onFocus={ handleFocus }
-              placeholder={ currentEntry.date }
+              placeholder={ currentEntry.createdDate }
               type='text'
-              value={ currentEntry.date } />
+              value={ currentEntry.createdDate } />
           </div>
 
           <div className='input-group'>
