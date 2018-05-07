@@ -16,7 +16,7 @@ function JournalEntries(
       <div className='entry-card' key={ entry._id }>
         <div className='entry-card-heading'>
           <span className='entry-name'>{ entry.name }</span>
-          <span className='entry-date'>{ formatDate(new Date(entry.date)) }</span>
+          <span className='entry-date'>{ formatDate(new Date(entry.createdDate)) }</span>
           <span className='entry-update' onClick={ (e) => handleUpdate(entry._id, e) }>update</span>
           <span className='entry-delete' onClick={ (e) => handleDelete(entry._id, e) }>delete</span>
         </div>

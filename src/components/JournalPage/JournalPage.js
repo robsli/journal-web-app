@@ -114,9 +114,8 @@ class JournalPage extends React.Component {
   }
   
   saveEntry() {
-    let entry = Object.assign({}, this.state.currentEntry, {
-      date: new Date(this.state.currentEntry.date)
-    });
+    let entry = Object.assign({}, this.state.currentEntry);
+    
     if (entry._id === undefined || entry._id === null) {
       EntriesApi.addEntry(entry)
         .then((response) => {
@@ -129,6 +128,7 @@ class JournalPage extends React.Component {
           console.log(err);
         });
     } else {
+      entry.lastModified = new Date();
       EntriesApi.updateEntry(entry)
       .then((response) => {
         EntriesApi.getAllEntries()
@@ -189,7 +189,7 @@ class JournalPage extends React.Component {
 }
 
 const emptyEntry = {
-  date: new Date(),
+  createdDate: new Date(),
   name: '',
   notes: ''
 }
