@@ -1,11 +1,11 @@
 import React from 'react';
 import EntriesApi from '../../api/entriesApi';
 import Header from '../Common/Header';
+import formatDate from '../Common/FormatDate';
 import EntryForm from '../EntryForm/EntryForm';
 import JournalEntries from '../JournalEntries/JournalEntries';
 import SearchBar from '../SearchBar/SearchBar';
 import './JournalPage.css';
-import formatDate from '../Common/FormatDate';
 
 class JournalPage extends React.Component {
   constructor(props) {
@@ -19,12 +19,11 @@ class JournalPage extends React.Component {
       showForm: false,
       viewEntries: false
     }
-    
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
-    this.saveEntry = this.saveEntry.bind(this);
+    this.handleSave = this.handleSave.bind(this);
     this.toggleView = this.toggleView.bind(this);
   }
 
@@ -36,6 +35,7 @@ class JournalPage extends React.Component {
   }
 
   handleChange(event) {
+
     const name = event.target.name;
     const value = event.target.value;
     
@@ -63,6 +63,36 @@ class JournalPage extends React.Component {
       });
   }
   
+  handleSave() {
+    let entry = Object.assign({}, this.state.currentEntry);
+    
+    if (entry._id === undefined || entry._id === null) {
+      EntriesApi.addEntry(entry)
+        .then((response) => {
+          EntriesApi.getAllEntries()
+            .then((response) => {
+              this.setState((prevState) => ({ currentEntry: emptyEntry, journalEntries: response }));
+            })
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      entry.lastModified = new Date();
+      EntriesApi.updateEntry(entry)
+        .then((response) => {
+          EntriesApi.getAllEntries()
+            .then((response) => {
+              this.setState((prevState) => ({ currentEntry: emptyEntry, journalEntries: response }));
+            })
+        })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+    this.toggleView({target: {id: 'showForm'}});
+  }
+
   handleSearch(event) {
     if (event.type === 'keydown' && event.keyCode === 13) {
       if (this.state.searchItem === '') {
@@ -102,7 +132,7 @@ class JournalPage extends React.Component {
       }));
     }
   }
-
+  
   handleUpdate(entryId, event) {
     const selectedEntry = Object.assign({}, this.state.journalEntries.filter(entry => {
       return entry._id === entryId;
@@ -110,37 +140,11 @@ class JournalPage extends React.Component {
     this.setState(prevState => ({
       currentEntry: selectedEntry
     }));
-    this.toggleView({target: {id: 'showForm'}});
-  }
-  
-  saveEntry() {
-    let entry = Object.assign({}, this.state.currentEntry);
-    
-    if (entry._id === undefined || entry._id === null) {
-      EntriesApi.addEntry(entry)
-        .then((response) => {
-          EntriesApi.getAllEntries()
-            .then((response) => {
-              this.setState((prevState) => ({ currentEntry: emptyEntry, journalEntries: response }));
-            })
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      entry.lastModified = new Date();
-      EntriesApi.updateEntry(entry)
-      .then((response) => {
-        EntriesApi.getAllEntries()
-          .then((response) => {
-            this.setState((prevState) => ({ currentEntry: emptyEntry, journalEntries: response }));
-          })
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    document.getElementsByName("createdDate")[0].disabled = true;
+    if (!this.state.showForm) {
+      this.toggleView({target: {id: 'showForm'}});
+      document.getElementsByName("createdDate")[0].disabled = false;
     }
-    this.toggleView({target: {id: 'showForm'}});
   }
 
   toggleView(event) {
@@ -178,7 +182,7 @@ class JournalPage extends React.Component {
               currentEntry = { this.state.currentEntry }
               formatDate = { formatDate }
               handleChange = { this.handleChange }
-              saveEntry = { this.saveEntry }
+              handleSave = { this.handleSave }
               showForm = { this.state.showForm }
               toggleView = { this.toggleView } />
           </div>

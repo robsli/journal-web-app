@@ -1,16 +1,15 @@
 import React from 'react';
 import './EntryForm.css';
 
-
 function EntryForm({
   currentEntry,
   handleChange,
-  saveEntry,
+  handleSave,
   showForm,
   toggleView
 }) {  
 
-  const handleFocus = (event) => {
+  function handleFocus(event) {
     const label = document.getElementsByName(`${event.target.name}-label`)
     if (label.length) {
       label[0].classList.toggle('in-focus');
@@ -18,6 +17,12 @@ function EntryForm({
     if (event.target.name === 'date') {
       event.target.type = event.target.type === 'text' ? 'date' : 'text';
     }
+  }
+
+  function isoDateFormat(date) {
+    const isoDate = (new Date(date)).toISOString();
+    const formattedDate = isoDate.split('T')[0];
+    return formattedDate;
   }
 
   return (
@@ -29,13 +34,13 @@ function EntryForm({
           <div className='input-group'>
             <label name='date-label'>Date</label>
             <input
-              name='date'
+              name='createdDate'
               onBlur={ handleFocus }
               onChange={ handleChange }
               onFocus={ handleFocus }
-              placeholder={ currentEntry.createdDate }
-              type='text'
-              value={ currentEntry.createdDate } />
+              placeholder={ isoDateFormat(currentEntry.createdDate) }
+              type='date'
+              value={ isoDateFormat(currentEntry.createdDate) } />
           </div>
 
           <div className='input-group'>
@@ -56,7 +61,7 @@ function EntryForm({
             onChange={ handleChange }
             value={ currentEntry.notes } />
 
-          <button onClick={ saveEntry }>Save</button>
+          <button onClick={ handleSave }>Save</button>
         </div>
       }
     </div>

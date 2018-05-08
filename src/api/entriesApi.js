@@ -1,5 +1,5 @@
 class EntriesApi {
-  static endpoint = 'https://my-journal-app.herokuapp.com/';
+  static endpoint = 'http://localhost:3001/';
 
   static addEntry(entry) {
     return fetch(`${this.endpoint}addEntry`, {
@@ -41,7 +41,7 @@ class EntriesApi {
       })
       .catch((error) => {
         console.error(error);
-        return []
+        return [];
       });
   }
 

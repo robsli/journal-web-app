@@ -3,7 +3,7 @@ import './Header.css';
 
 function Header(props) {
   return (
-    <div className='header'>Journal</div>
+    <div className='header'>Journal App</div>
   );
 }
 
