@@ -34,6 +34,7 @@ function EntryForm({
           <div className='input-group'>
             <label name='date-label'>Date</label>
             <input
+              disabled={ currentEntry._id ? true : false }
               name='createdDate'
               onBlur={ handleFocus }
               onChange={ handleChange }

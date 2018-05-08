@@ -140,11 +140,7 @@ class JournalPage extends React.Component {
     this.setState(prevState => ({
       currentEntry: selectedEntry
     }));
-    document.getElementsByName("createdDate")[0].disabled = true;
-    if (!this.state.showForm) {
-      this.toggleView({target: {id: 'showForm'}});
-      document.getElementsByName("createdDate")[0].disabled = false;
-    }
+    if (!this.state.showForm) this.toggleView({target: {id: 'showForm'}})
   }
 
   toggleView(event) {
