@@ -17,4 +17,41 @@
   display: flex;
   flex-direction: row;
   padding: 0 16px;
+  position: relative;
 }
+.body > .fa {
+  border: 0;
+  border-radius: 50%;
+  color: rgb(97, 97, 97);
+  font-size: 2rem;
+  left: 24px;
+  position: absolute;
+  top: 16px;
+  width: 2rem;
+
+  transform: rotate(45deg);
+  transition: all 0.1s ease;
+  text-align: center;
+  -webkit-text-stroke: 4px white;
+}
+.body > .fa.show {
+  transform: rotate(180deg);
+}
+.body > .fa:hover {
+  color: black;
+  cursor: pointer;
+}
+/* .form-enter {
+  background: red;
+  order: -1;
+}
+.form-enter.form-enter-active {
+  margin-right: 0;
+  transition: all 0.2s ease;
+}
+.form-leave {
+  margin-right: 0;
+}
+.form-leave.form-leave-active {
+  transition: all 0.2s ease;
+} */

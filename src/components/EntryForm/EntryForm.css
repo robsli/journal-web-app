@@ -1,34 +1,18 @@
 .form-component {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   box-sizing: border-box;
   display: flex;
+  flex: 1 1 40%;
   flex-direction: column;
-  margin-right: -64px;
+  margin-bottom: 24px;
   max-width: 300px;
   padding: 16px 16px;
   order: -1;
+}
+.form-enter, .form-enter.form-enter-active, 
+.form-leave, .form-leave.form-leave-active {
+  margin: 100px;
   transition: all 0.2s ease;
-}
-.form-component.open {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  flex: 1 1 40%;
-  margin-bottom: 24px;
-  margin-right: 0px;
-}
-.form-component > .fa {
-  border: 0;
-  border-radius: 50%;
-  color: rgb(97, 97, 97);
-  font-size: 2rem;
-  width: 2rem;
-  transition: all 0.1s ease;
-  text-align: center;
-  -webkit-text-stroke: 4px white;
-}
-.form-component > .fa.show {
-  transform: rotate(135deg);
-}
-.form-component > .fa:hover {
-  color: black;
 }
 .form-container {
   align-content: center;
@@ -52,7 +36,9 @@
   color: white;
 }
 .form-container > h2 {
+  margin-top: 32px;
   width: 100%;
+
   font-size: 1.4rem;
 }
 .form-container > label {

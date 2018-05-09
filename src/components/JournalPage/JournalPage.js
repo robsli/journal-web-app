@@ -1,4 +1,5 @@
 import React from 'react';
+// import { CSSTransitionGroup } from 'react-transition-group';
 import EntriesApi from '../../api/entriesApi';
 import Header from '../Common/Header';
 import formatDate from '../Common/FormatDate';
@@ -12,19 +13,18 @@ class JournalPage extends React.Component {
     super(props);
     this.state = {
       currentEntry: emptyEntry,
+      formHidden: false,
       journalEntries: [],
-      searchInitiatied: false,
-      searchItem: '',
-      searchResults: [],
-      showForm: false,
-      viewEntries: false
+      // searchInitiatied: false,
+      // searchItem: '',
+      // searchResults: []
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleSave = this.handleSave.bind(this);
-    this.toggleView = this.toggleView.bind(this);
+    this.toggleFormState = this.toggleFormState.bind(this);
   }
 
   componentDidMount() {
@@ -140,22 +140,14 @@ class JournalPage extends React.Component {
     this.setState(prevState => ({
       currentEntry: selectedEntry
     }));
-    if (!this.state.showForm) this.toggleView({target: {id: 'showForm'}})
+    if (this.state.formHidden) this.toggleFormState();
   }
 
-  toggleView(event) {
-    const name = event.target.name || event.target.id;
+  toggleFormState() {
     this.setState(prevState => ({
-      [name]: !prevState[name]
+      formHidden: !prevState.formHidden
     }))
-    if (this.state.showForm) {
-      this.setState(prevState => ({
-        currentEntry: emptyEntry
-      }));
-    };
-    if (name === 'showForm') {
-      document.getElementsByClassName('form-component')[0].classList.toggle('open');
-    }
+
   }
 
   render() {
@@ -172,15 +164,22 @@ class JournalPage extends React.Component {
               formatDate = { formatDate }
               handleDelete = { this.handleDelete }
               handleUpdate = { this.handleUpdate }
-              journalEntries = { this.state.searchInitiated ? this.state.searchResults : this.state.journalEntries }
-              viewEntries = { this.state.viewEntries } />
-            <EntryForm
-              currentEntry = { this.state.currentEntry }
-              formatDate = { formatDate }
-              handleChange = { this.handleChange }
-              handleSave = { this.handleSave }
-              showForm = { this.state.showForm }
-              toggleView = { this.toggleView } />
+              journalEntries = { this.state.searchInitiated ? this.state.searchResults : this.state.journalEntries } />
+            <i className={ this.state.formHidden ? 'fa fa-times' : 'fa fa-times show'} onClick={ this.toggleFormState }></i>
+            {/* <CSSTransitionGroup
+              transitionName='form'
+              transitionEnterTimeout={20000}
+              transitionLeaveTimeout={20000}> */}
+
+              { !this.state.formHidden &&
+                <EntryForm
+                  currentEntry = { this.state.currentEntry }
+                  formatDate = { formatDate }
+                  handleChange = { this.handleChange }
+                  handleSave = { this.handleSave }
+                  showForm = { this.state.showForm } />
+              }
+            {/* </CSSTransitionGroup> */}
           </div>
         </div>
       </div>
