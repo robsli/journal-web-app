@@ -52,13 +52,13 @@ class EntriesApi {
       headers: { 'content-type': 'application/json' },
       method: 'PUT'
     })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      return responseJson;
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+      .then((response) => response.json())
+      .then((responseJson) => {
+        return responseJson;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }
 
