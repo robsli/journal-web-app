@@ -9,11 +9,6 @@
   padding: 16px 16px;
   order: -1;
 }
-.form-enter, .form-enter.form-enter-active, 
-.form-leave, .form-leave.form-leave-active {
-  margin: 100px;
-  transition: all 0.2s ease;
-}
 .form-container {
   align-content: center;
   display: flex;
@@ -94,10 +89,16 @@
   height: 24px;
   outline: none;
 }
-
 .input-group > input:focus {
   border-color: rgb(148, 148, 186);
 }
-
 .input-group > input:focus::-webkit-input-placeholder { color:transparent; }
 .input-group > input:focus:-moz-placeholder { color:transparent; }
+
+@media (max-width: 599px) {
+  .form-component{
+    height: 80vh;
+    max-width: 100%;  
+    width: 100%;
+  }
+}

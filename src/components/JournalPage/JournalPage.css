@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  height: 200vh;
+  min-height: 100vh;
   background-color: lightgray;
 }
 .journal-app {
@@ -55,3 +55,13 @@
 .form-leave.form-leave-active {
   transition: all 0.2s ease;
 } */
+
+@media (max-width: 599px) {
+  .journal-app {
+    margin: 0;
+    width: 100%;
+  }
+  .body {
+    flex-direction: column;
+  }
+}
