@@ -18,20 +18,16 @@
   outline: none;
 }
 .search-container > .fa {
+  background-color: white;
   color: gray;
-  visibility: hidden;
   margin-left: -16px;
+  margin-bottom: 8px;
   transition: all 0.1s ease;
   -webkit-text-stroke: 1px white;
 }
 .search-container > i:hover {
   color: black;
-}
-.search-container > .clear-search {
-  color: gray;
-  padding-bottom: 6px;
-  transform: rotate(90deg);
-  visibility: visible;
+  cursor: pointer;
 }
 .search-container > input:focus::-webkit-input-placeholder { color:transparent; }
 .search-container > input:focus:-moz-placeholder { color:transparent; }

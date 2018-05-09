@@ -12,16 +12,14 @@ class JournalPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentEntry: emptyEntry,
-      formHidden: false,
+      formHidden: true,
       journalEntries: [],
-      // searchInitiatied: false,
-      // searchItem: '',
-      // searchResults: []
+      searchQuery: '',
+      selectedEntryId: ''
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleClearSearch = this.handleClearSearch.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.toggleFormState = this.toggleFormState.bind(this);
@@ -34,20 +32,53 @@ class JournalPage extends React.Component {
       })
   }
 
-  handleChange(event) {
+  executeSearch() {
+    if (this.state.searchQuery.length > 0) {
+      const searchResults = Object.assign([], this.state.journalEntries).filter(entry => {
+        return (entry.name.toLowerCase().includes(this.state.searchQuery.toLowerCase()) || 
+          entry.notes.toLowerCase().includes(this.state.searchQuery.toLowerCase()) ||
+          entry.createdDate.toLowerCase().includes(this.state.searchQuery.toLowerCase()));
+        });
 
+      return searchResults;
+     }
+  }
+
+  findEntry(entryId) {
+    const result = Object.assign([], this.state.journalEntries).filter(entry => {
+      return entry._id === entryId;
+    });
+    if (result.length === 0) {
+      return {
+        _id: '',
+        createdDate: new Date(),
+        name: '',
+        notes: ''
+      }
+    } else {
+      return result[0]
+    }
+  }
+
+  handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
     
-    if (name === 'searchItem') {
+    if (name === 'searchQuery') {
       this.setState(prevState => ({
-        [name]: value
+        searchQuery: value
       }));
     } else {
       this.setState(prevState => ({
         currentEntry: Object.assign({}, prevState.currentEntry, {[name]:value})
       }));
     }
+  }
+
+  handleClearSearch(event) {
+    this.setState(prevState => ({
+      searchQuery: ''
+    }));
   }
 
   handleDelete(entryId, event) {
@@ -63,15 +94,14 @@ class JournalPage extends React.Component {
       });
   }
   
-  handleSave() {
-    let entry = Object.assign({}, this.state.currentEntry);
-    
-    if (entry._id === undefined || entry._id === null) {
+  handleSave(entry) {    
+    if (entry._id === '') {
+      delete entry._id; // TODO: find a better way to implement this.
       EntriesApi.addEntry(entry)
         .then((response) => {
           EntriesApi.getAllEntries()
             .then((response) => {
-              this.setState((prevState) => ({ currentEntry: emptyEntry, journalEntries: response }));
+              this.setState((prevState) => ({ selectedEntryId: '', journalEntries: response }));
             })
         })
         .catch((err) => {
@@ -83,71 +113,28 @@ class JournalPage extends React.Component {
         .then((response) => {
           EntriesApi.getAllEntries()
             .then((response) => {
-              this.setState((prevState) => ({ currentEntry: emptyEntry, journalEntries: response }));
+              this.setState((prevState) => ({ selectedEntryId: '', journalEntries: response }));
             })
         })
       .catch((err) => {
         console.log(err);
       });
     }
-    this.toggleView({target: {id: 'showForm'}});
-  }
-
-  handleSearch(event) {
-    if (event.type === 'keydown' && event.keyCode === 13) {
-      if (this.state.searchItem === '') {
-        this.setState(prevState => ({
-          searchInitiated: false,
-          searchResults: []
-        }));
-        // console.log('You didn\'t enter anything into the search field. Can\'t search for nothing!');
-      } else {
-        const searchResults = Object.assign([], this.state.journalEntries).filter(entry => {
-          return (entry.name.toLowerCase().includes(this.state.searchItem.toLowerCase()) || 
-                  entry.notes.toLowerCase().includes(this.state.searchItem.toLowerCase()))
-        })
-        this.setState(prevState => ({
-          searchInitiated: true,
-          searchResults: searchResults
-        }));
-      }
-    } else if (event.target.className === 'fa fa-times') {
-      this.setState(prevState => ({
-        searchItem: '',
-        searchInitiated: false,
-        searchResults: []
-      }));
-    } else if (event.type === 'change') {
-      const name = event.target.name;
-      const value = event.target.value;
-
-      if (value !== '') {
-        document.getElementsByName('clearSearch')[0].classList.add('clear-search');
-      } else {
-        document.getElementsByName('clearSearch')[0].classList.remove('clear-search');
-      }
-  
-      this.setState(prevState => ({
-        [name]: value
-      }));
-    }
+    this.toggleFormState();
   }
   
   handleUpdate(entryId, event) {
-    const selectedEntry = Object.assign({}, this.state.journalEntries.filter(entry => {
-      return entry._id === entryId;
-    }))[0];
     this.setState(prevState => ({
-      currentEntry: selectedEntry
-    }));
-    if (this.state.formHidden) this.toggleFormState();
+      selectedEntryId: entryId
+    }))
+
+    this.toggleFormState()
   }
 
   toggleFormState() {
     this.setState(prevState => ({
       formHidden: !prevState.formHidden
     }))
-
   }
 
   render() {
@@ -156,15 +143,15 @@ class JournalPage extends React.Component {
         <Header />
         <div className='journal-app'>
           <SearchBar
-              handleChange = { this.handleSearch }
-              handleSearch = { this.handleSearch }
-              searchItem = { this.state.searchItem } />
+            handleChange = { this.handleChange }
+            handleClearSearch = { this.handleClearSearch }
+            searchQuery = { this.state.searchQuery } />
           <div className='body'>
             <JournalEntries
               formatDate = { formatDate }
               handleDelete = { this.handleDelete }
               handleUpdate = { this.handleUpdate }
-              journalEntries = { this.state.searchInitiated ? this.state.searchResults : this.state.journalEntries } />
+              journalEntries = { this.state.searchQuery.length > 0 ? this.executeSearch() : this.state.journalEntries } />
             <i className={ this.state.formHidden ? 'fa fa-times' : 'fa fa-times show'} onClick={ this.toggleFormState }></i>
             {/* <CSSTransitionGroup
               transitionName='form'
@@ -173,10 +160,8 @@ class JournalPage extends React.Component {
 
               { !this.state.formHidden &&
                 <EntryForm
-                  currentEntry = { this.state.currentEntry }
-                  formatDate = { formatDate }
-                  handleChange = { this.handleChange }
                   handleSave = { this.handleSave }
+                  selectedEntry = { this.findEntry(this.state.selectedEntryId) }
                   showForm = { this.state.showForm } />
               }
             {/* </CSSTransitionGroup> */}
@@ -185,12 +170,6 @@ class JournalPage extends React.Component {
       </div>
     );
   }
-}
-
-const emptyEntry = {
-  createdDate: new Date(),
-  name: '',
-  notes: ''
 }
 
 export default JournalPage;

@@ -2,6 +2,7 @@ class EntriesApi {
   static endpoint = 'https://my-journal-app.herokuapp.com/';
 
   static addEntry(entry) {
+    debugger;
     return fetch(`${this.endpoint}addEntry`, {
       body: JSON.stringify(entry),
       headers: { 'content-type': 'application/json' },
