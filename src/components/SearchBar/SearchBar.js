@@ -1,5 +1,5 @@
-import React from 'react';
-import './SearchBar.css';
+import React from 'react'
+import './SearchBar.css'
 
 function SearchBar({
   handleChange,
@@ -19,7 +19,7 @@ function SearchBar({
         <i name='clearSearch' className='fa fa-times' aria-hidden='true' onClick={ handleClearSearch }></i>
       }
     </div>
-  );
+  )
 }
 
-export default SearchBar;
+export default SearchBar

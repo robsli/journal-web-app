@@ -1,5 +1,5 @@
-import React from 'react';
-import './JournalEntries.css';
+import React from 'react'
+import './JournalEntries.css'
 
 function JournalEntries(
   {
@@ -32,7 +32,7 @@ function JournalEntries(
         { entries }
       </div>
     </div>
-  );
+  )
 }
 
-export default JournalEntries;
+export default JournalEntries
