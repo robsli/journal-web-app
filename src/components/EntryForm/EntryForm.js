@@ -12,6 +12,12 @@ class EntryForm extends React.Component {
     this.isoDateformat = this.isoDateFormat.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedEntry._id !== this.state.entry._id) {
+      this.setState({ entry: nextProps.selectedEntry });
+    }
+  }
+
   handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
