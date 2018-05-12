@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar clear input field icon disappears when searchQuery prop is cleared 1`] = `
+<div
+  className="search-container"
+>
+  <input
+    name="searchQuery"
+    onChange={undefined}
+    placeholder="Enter search item here"
+    size="10"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`SearchBar renders the default view correctly 1`] = `
+<div
+  className="search-container"
+>
+  <input
+    name="searchQuery"
+    onChange={undefined}
+    placeholder="Enter search item here"
+    size="10"
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`SearchBar renders the the user input correctly and displays clear input icon 1`] = `
+<div
+  className="search-container"
+>
+  <input
+    name="searchQuery"
+    onChange={undefined}
+    placeholder="Enter search item here"
+    size="10"
+    type="text"
+    value="test"
+  />
+  <i
+    aria-hidden="true"
+    className="fa fa-times"
+    name="clearSearch"
+    onClick={undefined}
+  />
+</div>
+`;

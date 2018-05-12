@@ -1,0 +1,474 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<JournalPage /> component deletes the correct entry when handleDelete is called 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="header"
+  >
+    Journal App
+  </div>
+  <div
+    className="journal-app"
+  >
+    <div
+      className="search-container"
+    >
+      <input
+        name="searchQuery"
+        onChange={[Function]}
+        placeholder="Enter search item here"
+        size="10"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="body"
+    >
+      <div
+        className="entry-list-component"
+      >
+        <h2>
+          Journal Entries
+        </h2>
+        <div
+          className="entry-cards"
+        >
+          <div
+            className="entry-card"
+          >
+            <div
+              className="entry-card-heading"
+            >
+              <span
+                className="entry-name"
+              >
+                Entry 1
+              </span>
+              <span
+                className="entry-date"
+              >
+                Sunday, Dec 31, 2017
+              </span>
+              <span
+                className="entry-update"
+                onClick={[Function]}
+              >
+                update
+              </span>
+              <span
+                className="entry-delete"
+                onClick={[Function]}
+              >
+                delete
+              </span>
+            </div>
+            <span
+              className="entry-notes"
+            >
+              Entry 1 notes
+            </span>
+          </div>
+          <div
+            className="entry-card"
+          >
+            <div
+              className="entry-card-heading"
+            >
+              <span
+                className="entry-name"
+              >
+                Entry 2
+              </span>
+              <span
+                className="entry-date"
+              >
+                Thursday, Feb 1, 2018
+              </span>
+              <span
+                className="entry-update"
+                onClick={[Function]}
+              >
+                update
+              </span>
+              <span
+                className="entry-delete"
+                onClick={[Function]}
+              >
+                delete
+              </span>
+            </div>
+            <span
+              className="entry-notes"
+            >
+              Entry 2 notes
+            </span>
+          </div>
+        </div>
+      </div>
+      <i
+        className="fa fa-times"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<JournalPage /> component opens entry form and passes correct information to EntryForm component when handleUpdate is called 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="header"
+  >
+    Journal App
+  </div>
+  <div
+    className="journal-app"
+  >
+    <div
+      className="search-container"
+    >
+      <input
+        name="searchQuery"
+        onChange={[Function]}
+        placeholder="Enter search item here"
+        size="10"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="body"
+    >
+      <div
+        className="entry-list-component"
+      >
+        <h2>
+          Journal Entries
+        </h2>
+        <div
+          className="entry-cards"
+        >
+          <div
+            className="entry-card"
+          >
+            <div
+              className="entry-card-heading"
+            >
+              <span
+                className="entry-name"
+              >
+                Entry 1
+              </span>
+              <span
+                className="entry-date"
+              >
+                Sunday, Dec 31, 2017
+              </span>
+              <span
+                className="entry-update"
+                onClick={[Function]}
+              >
+                update
+              </span>
+              <span
+                className="entry-delete"
+                onClick={[Function]}
+              >
+                delete
+              </span>
+            </div>
+            <span
+              className="entry-notes"
+            >
+              Entry 1 notes
+            </span>
+          </div>
+          <div
+            className="entry-card"
+          >
+            <div
+              className="entry-card-heading"
+            >
+              <span
+                className="entry-name"
+              >
+                Entry 2
+              </span>
+              <span
+                className="entry-date"
+              >
+                Thursday, Feb 1, 2018
+              </span>
+              <span
+                className="entry-update"
+                onClick={[Function]}
+              >
+                update
+              </span>
+              <span
+                className="entry-delete"
+                onClick={[Function]}
+              >
+                delete
+              </span>
+            </div>
+            <span
+              className="entry-notes"
+            >
+              Entry 2 notes
+            </span>
+          </div>
+        </div>
+      </div>
+      <i
+        className="fa fa-times show"
+        onClick={[Function]}
+      />
+      <div
+        className="form-component"
+      >
+        <div
+          className="form-container"
+        >
+          <h2>
+            Add Journal Entry
+          </h2>
+          <div
+            className="input-group"
+          >
+            <label
+              name="date-label"
+            >
+              Date
+            </label>
+            <input
+              disabled={false}
+              name="createdDate"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="2018-02-02"
+              type="date"
+              value="2018-02-02"
+            />
+          </div>
+          <div
+            className="input-group"
+          >
+            <label
+              name="name-label"
+            >
+              Name
+            </label>
+            <input
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Name"
+              type="text"
+              value="Entry 2"
+            />
+          </div>
+          <label>
+            Notes
+          </label>
+          <textarea
+            name="notes"
+            onChange={[Function]}
+            value="Entry 2 notes"
+          />
+          <button
+            onClick={[Function]}
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<JournalPage /> component opens the add entry form when user clicks the "+" button 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="header"
+  >
+    Journal App
+  </div>
+  <div
+    className="journal-app"
+  >
+    <div
+      className="search-container"
+    >
+      <input
+        name="searchQuery"
+        onChange={[Function]}
+        placeholder="Enter search item here"
+        size="10"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="body"
+    >
+      <div
+        className="entry-list-component"
+      >
+        <h2>
+          Journal Entries
+        </h2>
+        <div
+          className="entry-cards"
+        >
+          <div
+            className="entry-card"
+          >
+            <div
+              className="entry-card-heading"
+            >
+              <span
+                className="entry-name"
+              >
+                Entry 1
+              </span>
+              <span
+                className="entry-date"
+              >
+                Sunday, Dec 31, 2017
+              </span>
+              <span
+                className="entry-update"
+                onClick={[Function]}
+              >
+                update
+              </span>
+              <span
+                className="entry-delete"
+                onClick={[Function]}
+              >
+                delete
+              </span>
+            </div>
+            <span
+              className="entry-notes"
+            >
+              Entry 1 notes
+            </span>
+          </div>
+          <div
+            className="entry-card"
+          >
+            <div
+              className="entry-card-heading"
+            >
+              <span
+                className="entry-name"
+              >
+                Entry 2
+              </span>
+              <span
+                className="entry-date"
+              >
+                Thursday, Feb 1, 2018
+              </span>
+              <span
+                className="entry-update"
+                onClick={[Function]}
+              >
+                update
+              </span>
+              <span
+                className="entry-delete"
+                onClick={[Function]}
+              >
+                delete
+              </span>
+            </div>
+            <span
+              className="entry-notes"
+            >
+              Entry 2 notes
+            </span>
+          </div>
+        </div>
+      </div>
+      <i
+        className="fa fa-times show"
+        onClick={[Function]}
+      />
+      <div
+        className="form-component"
+      >
+        <div
+          className="form-container"
+        >
+          <h2>
+            Add Journal Entry
+          </h2>
+          <div
+            className="input-group"
+          >
+            <label
+              name="date-label"
+            >
+              Date
+            </label>
+            <input
+              disabled={false}
+              name="createdDate"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="2018-05-12"
+              type="date"
+              value="2018-05-12"
+            />
+          </div>
+          <div
+            className="input-group"
+          >
+            <label
+              name="name-label"
+            >
+              Name
+            </label>
+            <input
+              name="name"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              placeholder="Name"
+              type="text"
+              value=""
+            />
+          </div>
+          <label>
+            Notes
+          </label>
+          <textarea
+            name="notes"
+            onChange={[Function]}
+            value=""
+          />
+          <button
+            onClick={[Function]}
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
