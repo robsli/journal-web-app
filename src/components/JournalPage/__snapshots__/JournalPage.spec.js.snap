@@ -1,5 +1,122 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<JournalPage /> component clears the selected entry details when user closes entry form 1`] = `
+<div
+  className="wrapper"
+>
+  <div
+    className="header"
+  >
+    Journal App
+  </div>
+  <div
+    className="journal-app"
+  >
+    <div
+      className="search-container"
+    >
+      <input
+        name="searchQuery"
+        onChange={[Function]}
+        placeholder="Enter search item here"
+        size="10"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="body"
+    >
+      <div
+        className="entry-list-component"
+      >
+        <h2>
+          Journal Entries
+        </h2>
+        <div
+          className="entry-cards"
+        >
+          <div
+            className="entry-card"
+          >
+            <div
+              className="entry-card-heading"
+            >
+              <span
+                className="entry-name"
+              >
+                Entry 1
+              </span>
+              <span
+                className="entry-date"
+              >
+                Sunday, Dec 31, 2017
+              </span>
+              <span
+                className="entry-update"
+                onClick={[Function]}
+              >
+                update
+              </span>
+              <span
+                className="entry-delete"
+                onClick={[Function]}
+              >
+                delete
+              </span>
+            </div>
+            <span
+              className="entry-notes"
+            >
+              Entry 1 notes
+            </span>
+          </div>
+          <div
+            className="entry-card"
+          >
+            <div
+              className="entry-card-heading"
+            >
+              <span
+                className="entry-name"
+              >
+                Entry 2
+              </span>
+              <span
+                className="entry-date"
+              >
+                Thursday, Feb 1, 2018
+              </span>
+              <span
+                className="entry-update"
+                onClick={[Function]}
+              >
+                update
+              </span>
+              <span
+                className="entry-delete"
+                onClick={[Function]}
+              >
+                delete
+              </span>
+            </div>
+            <span
+              className="entry-notes"
+            >
+              Entry 2 notes
+            </span>
+          </div>
+        </div>
+      </div>
+      <i
+        className="fa fa-times"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<JournalPage /> component deletes the correct entry when handleDelete is called 1`] = `
 <div
   className="wrapper"
@@ -430,9 +547,9 @@ exports[`<JournalPage /> component opens the add entry form when user clicks the
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="2018-05-12"
+              placeholder="2018-05-14"
               type="date"
-              value="2018-05-12"
+              value="2018-05-14"
             />
           </div>
           <div

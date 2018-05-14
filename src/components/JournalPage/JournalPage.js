@@ -132,7 +132,8 @@ class JournalPage extends React.Component {
 
   toggleFormState() {
     this.setState(prevState => ({
-      formHidden: !prevState.formHidden
+      formHidden: !prevState.formHidden,
+      selectedEntryId: !prevState.formHidden ? '' : prevState.selectedEntryId
     }))
   }
 

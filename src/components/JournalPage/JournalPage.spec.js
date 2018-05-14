@@ -63,6 +63,22 @@ describe('<JournalPage /> component', () => {
 
   })
 
+  it('clears the selected entry details when user closes entry form', () => {
+    // Arrange
+    initialState.formHidden = false
+    initialState.selectedEntryId = 'test1234'
+    journalPage.setState(initialState)
+    
+    // Act
+    const closeIcon = journalPage.find('.fa-times')
+    closeIcon.simulate('click')
+    const rendered = renderer.create(journalPage)
+
+    // Assert
+    expect(journalPage.state().selectedEntryId).toBe('')
+    expect(rendered.toJSON()).toMatchSnapshot()
+  })
+
   it('correctly clears the searchQuery when handleClearSearch is called', () => {
     // Arrange
     initialState.searchQuery = 'test'
