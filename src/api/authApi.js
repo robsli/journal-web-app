@@ -1,6 +1,15 @@
 const endpoint = process.env.NODE_ENV === 'production' ? 'https://my-journal-app.herokuapp.com/' : 'http://localhost:3001/'
 
 const AuthApi = {
+  authenticate: () => {
+    return fetch(`${endpoint}authenticate`, {
+      credentials: 'include',
+      method: 'POST'
+    })
+    .then((response) => {
+      return response.json()
+    })
+  },
   login: (credentials) => {
     return fetch(`${endpoint}login`, {
         body: JSON.stringify(credentials),

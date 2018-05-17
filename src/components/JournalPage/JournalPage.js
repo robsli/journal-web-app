@@ -2,8 +2,9 @@ import React from 'react'
 import Modal from 'react-modal'
 import AuthApi from '../../api/authApi'
 import EntriesApi from '../../api/entriesApi'
-import Header from '../Common/Header'
+import Header from '../Common/Header/Header'
 import formatDate from '../Common/FormatDate'
+import Loader from '../Common/Loader/Loader'
 import EntryForm from '../EntryForm/EntryForm'
 import JournalEntries from '../JournalEntries/JournalEntries'
 import SearchBar from '../SearchBar/SearchBar'
@@ -16,6 +17,7 @@ class JournalPage extends React.Component {
     this.state = {
       entryFormHidden: true,
       isAuthenticated: false,
+      isLoading: true,
       journalEntries: [],
       modalIsOpen: false,
       password: '',
@@ -37,12 +39,26 @@ class JournalPage extends React.Component {
   }
 
   componentDidMount() {
-    EntriesApi.getEntries()
+    setTimeout(() => 
+    AuthApi.authenticate()
       .then((response) => {
         this.setState({
-          isAuthenticated: document.cookie,
-          journalEntries: response })
+          username: response.username
+        })
       })
+      .then((response) => {
+        EntriesApi.getEntries()
+          .then((response) => {
+            this.setState({
+              isAuthenticated: document.cookie,
+              isLoading: false,
+              journalEntries: response 
+            })
+          })
+          .catch((err) => console.log(err))
+        })
+      .catch((err) => console.log(err))
+    , 3000)
   }
 
   closeModal() {
@@ -220,38 +236,39 @@ class JournalPage extends React.Component {
                 selectedEntry = { this.findEntry(this.state.selectedEntryId) }
               />
             }
-            <Modal 
-              className='user-modal'
-              contentLabel='User Modal'
-              isOpen={ this.state.modalIsOpen }
-              onRequestClose= {this.closeModal }
-              overlayClassName='modal-overlay'
-            >
-              <h1>Welcome Back!</h1>
-              <div className='input-group'>
-                <i className='fa fa-user'></i>
-                <input
-                  onChange={ this.handleChange }
-                  name='username'
-                  placeholder='Username'
-                  type='text'
-                />
-              </div>
-              <div className='input-group'>
-                <i className='fa fa-lock'></i>
-                <input
-                  onChange={ this.handleChange }
-                  name='password'
-                  placeholder='Password'
-                  type='password'
-                />
-              </div>
-              <div className='modal-actions'>
-                <button className='cancel' onClick={ () => this.closeModal() }>Cancel</button>
-                <button className='login' onClick={ () => this.login(this.state.username, this.state.password) }>Log In</button>
-              </div>
-            </Modal>
           </div>
+          { this.state.isLoading && <Loader /> }
+          <Modal 
+            className='user-modal'
+            contentLabel='User Modal'
+            isOpen={ this.state.modalIsOpen }
+            onRequestClose= {this.closeModal }
+            overlayClassName='modal-overlay'
+          >
+            <h1>Welcome Back!</h1>
+            <div className='input-group'>
+              <i className='fa fa-user'></i>
+              <input
+                onChange={ this.handleChange }
+                name='username'
+                placeholder='Username'
+                type='text'
+              />
+            </div>
+            <div className='input-group'>
+              <i className='fa fa-lock'></i>
+              <input
+                onChange={ this.handleChange }
+                name='password'
+                placeholder='Password'
+                type='password'
+              />
+            </div>
+            <div className='modal-actions'>
+              <button className='cancel' onClick={ () => this.closeModal() }>Cancel</button>
+              <button className='login' onClick={ () => this.login(this.state.username, this.state.password) }>Log In</button>
+            </div>
+          </Modal>
         </div>
       </div>
     )
