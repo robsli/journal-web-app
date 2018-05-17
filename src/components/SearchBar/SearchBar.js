@@ -2,7 +2,7 @@ import React from 'react'
 import './SearchBar.css'
 
 function SearchBar({
-  handleChange,
+  handleSearchField,
   handleClearSearch,
   searchQuery
 }) {
@@ -12,7 +12,7 @@ function SearchBar({
         type='text' 
         name='searchQuery' 
         value={ searchQuery } 
-        onChange={ handleChange }
+        onChange={ handleSearchField }
         placeholder='Enter search item here'
         size='10' />
       { searchQuery.length > 0 &&

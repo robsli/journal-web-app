@@ -7,7 +7,31 @@ exports[`<JournalPage /> component clears the selected entry details when user c
   <div
     className="header"
   >
-    Journal App
+    <span>
+      Journal App
+    </span>
+    <input
+      name="username"
+      onChange={[Function]}
+      placeholder="Username"
+      type="text"
+    />
+    <input
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+    />
+    <button
+      onClick={[Function]}
+    >
+      Log In
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Sign Up
+    </button>
   </div>
   <div
     className="journal-app"
@@ -17,7 +41,7 @@ exports[`<JournalPage /> component clears the selected entry details when user c
     >
       <input
         name="searchQuery"
-        onChange={[Function]}
+        onChange={undefined}
         placeholder="Enter search item here"
         size="10"
         type="text"
@@ -124,7 +148,31 @@ exports[`<JournalPage /> component deletes the correct entry when handleDelete i
   <div
     className="header"
   >
-    Journal App
+    <span>
+      Journal App
+    </span>
+    <input
+      name="username"
+      onChange={[Function]}
+      placeholder="Username"
+      type="text"
+    />
+    <input
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+    />
+    <button
+      onClick={[Function]}
+    >
+      Log In
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Sign Up
+    </button>
   </div>
   <div
     className="journal-app"
@@ -134,7 +182,7 @@ exports[`<JournalPage /> component deletes the correct entry when handleDelete i
     >
       <input
         name="searchQuery"
-        onChange={[Function]}
+        onChange={undefined}
         placeholder="Enter search item here"
         size="10"
         type="text"
@@ -241,7 +289,31 @@ exports[`<JournalPage /> component opens entry form and passes correct informati
   <div
     className="header"
   >
-    Journal App
+    <span>
+      Journal App
+    </span>
+    <input
+      name="username"
+      onChange={[Function]}
+      placeholder="Username"
+      type="text"
+    />
+    <input
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+    />
+    <button
+      onClick={[Function]}
+    >
+      Log In
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Sign Up
+    </button>
   </div>
   <div
     className="journal-app"
@@ -251,7 +323,7 @@ exports[`<JournalPage /> component opens entry form and passes correct informati
     >
       <input
         name="searchQuery"
-        onChange={[Function]}
+        onChange={undefined}
         placeholder="Enter search item here"
         size="10"
         type="text"
@@ -419,7 +491,31 @@ exports[`<JournalPage /> component opens the add entry form when user clicks the
   <div
     className="header"
   >
-    Journal App
+    <span>
+      Journal App
+    </span>
+    <input
+      name="username"
+      onChange={[Function]}
+      placeholder="Username"
+      type="text"
+    />
+    <input
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      type="password"
+    />
+    <button
+      onClick={[Function]}
+    >
+      Log In
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Sign Up
+    </button>
   </div>
   <div
     className="journal-app"
@@ -429,7 +525,7 @@ exports[`<JournalPage /> component opens the add entry form when user clicks the
     >
       <input
         name="searchQuery"
-        onChange={[Function]}
+        onChange={undefined}
         placeholder="Enter search item here"
         size="10"
         type="text"
@@ -547,9 +643,9 @@ exports[`<JournalPage /> component opens the add entry form when user clicks the
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              placeholder="2018-05-14"
+              placeholder="2018-05-16"
               type="date"
-              value="2018-05-14"
+              value="2018-05-16"
             />
           </div>
           <div

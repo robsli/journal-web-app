@@ -16,7 +16,7 @@ describe('<JournalPage /> component', () => {
 
   beforeEach(() => {
     initialState = {
-      formHidden: true,
+      entryFormHidden: true,
       journalEntries: [
         { _id: 1, name: 'Entry 1', createdDate: new Date('2018-01-01'), notes: 'Entry 1 notes' },
         { _id: 2, name: 'Entry 2', createdDate: new Date('2018-02-02'), notes: 'Entry 2 notes' }
@@ -37,20 +37,22 @@ describe('<JournalPage /> component', () => {
 
     // Assert
     expect(journalPage.state()).toEqual({
-      formHidden: true,
+      entryFormHidden: true,
       journalEntries: [
         { _id: 1, name: 'Entry 1', createdDate: new Date('2018-01-01'), notes: 'Entry 1 notes' },
         { _id: 2, name: 'Entry 2', createdDate: new Date('2018-02-02'), notes: 'Entry 2 notes' }
       ],
+      password: '',
       searchQuery: '',
-      selectedEntryId: ''
+      selectedEntryId: '',
+      username: ''
     })
   })
 
   it('opens the add entry form when user clicks the "+" button', () => {
     // Arrange
     journalPage.setState(initialState)
-    expect(journalPage.state().formHidden).toBe(true)
+    expect(journalPage.state().entryFormHidden).toBe(true)
 
     // Act
     const addIcon = journalPage.find('.fa-times')
@@ -58,14 +60,14 @@ describe('<JournalPage /> component', () => {
     const rendered = renderer.create(journalPage)
 
     // Assert
-    expect(journalPage.state().formHidden).toBe(false)
+    expect(journalPage.state().entryFormHidden).toBe(false)
     expect(rendered.toJSON()).toMatchSnapshot()
 
   })
 
   it('clears the selected entry details when user closes entry form', () => {
     // Arrange
-    initialState.formHidden = false
+    initialState.entryFormHidden = false
     initialState.selectedEntryId = 'test1234'
     journalPage.setState(initialState)
     
@@ -102,7 +104,7 @@ describe('<JournalPage /> component', () => {
 
     // Assert
     expect(journalPage.state().selectedEntryId).toBe(2)
-    expect(journalPage.state().formHidden).toBe(false)
+    expect(journalPage.state().entryFormHidden).toBe(false)
     expect(rendered.toJSON()).toMatchSnapshot()
   })
 

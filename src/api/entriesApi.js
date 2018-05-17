@@ -1,9 +1,10 @@
-const endpoint = 'https://my-journal-app.herokuapp.com/'
+const endpoint = process.env.NODE_ENV === 'production' ? 'https://my-journal-app.herokuapp.com/' : 'http://localhost:3001/'
 
 const EntriesApi = {
   addEntry: (entry) => {
-    return fetch(`${endpoint}addEntry`, {
+    return fetch(`${endpoint}entries/addEntry`, {
       body: JSON.stringify(entry),
+      credentials: 'include',
       headers: { 'content-type': 'application/json' },
       method: 'POST'
     })
@@ -16,8 +17,9 @@ const EntriesApi = {
       })
   },
   deleteEntry: (entryId) => {
-    return fetch(`${endpoint}deleteEntry`, {
+    return fetch(`${endpoint}entries/deleteEntry`, {
       body: JSON.stringify({ _id: entryId }),
+      credentials: 'include',
       headers: { 'content-type': 'application/json' },
       method: 'DELETE'
     })
@@ -29,8 +31,9 @@ const EntriesApi = {
         console.error(error)
       })
   },
-  getAllEntries: () => {
-    return fetch(`${endpoint}entries`, {
+  getEntries: () => {
+    return fetch(`${endpoint}`, {
+      credentials: 'include',
       method: 'GET'
     })
       .then((response) => response.json())
@@ -43,8 +46,9 @@ const EntriesApi = {
       })
   },
   updateEntry: (entry) => {
-    return fetch(`${endpoint}updateEntry`, {
+    return fetch(`${endpoint}entries/updateEntry`, {
       body: JSON.stringify(entry),
+      credentials: 'include',
       headers: { 'content-type': 'application/json' },
       method: 'PUT'
     })

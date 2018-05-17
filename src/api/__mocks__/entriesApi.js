@@ -17,7 +17,7 @@ const EntriesApi = {
       resolve(result)
     })
   }),
-  getAllEntries: jest.fn(() => {
+  getEntries: jest.fn(() => {
     return new Promise((resolve, reject) => {
       resolve(mockData)
     })
