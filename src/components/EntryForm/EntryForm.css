@@ -96,9 +96,12 @@
 .input-group > input:focus:-moz-placeholder { color:transparent; }
 
 @media (max-width: 599px) {
-  .form-component{
-    height: 80vh;
+  .form-component {
+    height: 400px;
     max-width: 100%;  
     width: 100%;
+  }
+  .form-container > textarea {
+    height: auto;
   }
 }
