@@ -43,8 +43,8 @@ class JournalPage extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       AuthApi.authenticate()
-      .then((response) => {
-        this.setState({
+      .then( async(response) => {
+        await this.setState({
           username: response.username
         })
       })
