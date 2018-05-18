@@ -33,7 +33,7 @@ class JournalPage extends React.Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
     this.handleSave = this.handleSave.bind(this)
-    this.loadingTime = 1000
+    this.loadingTime = 800
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
     this.openModal = this.openModal.bind(this)
@@ -50,14 +50,14 @@ class JournalPage extends React.Component {
       })
       .then((response) => {
         EntriesApi.getEntries()
-        .then((response) => {
-          this.setState({
-            isAuthenticated: document.cookie,
-            isLoading: false,
-            journalEntries: response 
+          .then((response) => {
+            this.setState({
+              isAuthenticated: this.state.username !== '',
+              isLoading: false,
+              journalEntries: response 
+            })
           })
-        })
-        .catch((err) => console.log(err))
+          .catch((err) => console.log(err))
       })
       .catch((err) => console.log(err))
     }, this.loadingTime)
