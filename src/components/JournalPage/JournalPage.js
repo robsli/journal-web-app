@@ -5,8 +5,9 @@ import EntriesApi from '../../api/entriesApi'
 import Header from '../Common/Header/Header'
 import formatDate from '../Common/FormatDate'
 import Loader from '../Common/Loader/Loader'
-import EntryForm from '../EntryForm/EntryForm'
+import EntryFormModal from '../Modals/EntryFormModal/EntryFormModal'
 import JournalEntries from '../JournalEntries/JournalEntries'
+import LoginModal from '../Modals/LoginModal/LoginModal'
 import SearchBar from '../SearchBar/SearchBar'
 import './JournalPage.css'
 
@@ -32,6 +33,7 @@ class JournalPage extends React.Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
     this.handleSave = this.handleSave.bind(this)
+    this.loadingTime = 1000
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
     this.openModal = this.openModal.bind(this)
@@ -39,8 +41,8 @@ class JournalPage extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => 
-    AuthApi.authenticate()
+    setTimeout(() => {
+      AuthApi.authenticate()
       .then((response) => {
         this.setState({
           username: response.username
@@ -48,17 +50,17 @@ class JournalPage extends React.Component {
       })
       .then((response) => {
         EntriesApi.getEntries()
-          .then((response) => {
-            this.setState({
-              isAuthenticated: document.cookie,
-              isLoading: false,
-              journalEntries: response 
-            })
+        .then((response) => {
+          this.setState({
+            isAuthenticated: document.cookie,
+            isLoading: false,
+            journalEntries: response 
           })
-          .catch((err) => console.log(err))
         })
+        .catch((err) => console.log(err))
+      })
       .catch((err) => console.log(err))
-    , 3000)
+    }, this.loadingTime)
   }
 
   closeModal() {
@@ -94,10 +96,17 @@ class JournalPage extends React.Component {
   }
 
   getEntries() {
-    EntriesApi.getEntries()
-    .then((response) => {
-      this.setState((prevState) => ({ journalEntries: response }))
-    })
+    this.setState(prevState => ({ isLoading: true }))
+
+    setTimeout(() => {
+      EntriesApi.getEntries()
+        .then((response) => {
+          this.setState(prevState => ({
+            isLoading: false,
+            journalEntries: response
+          }))
+        })
+    }, this.loadingTime)
   }
 
   handleChange(event) {
@@ -230,45 +239,22 @@ class JournalPage extends React.Component {
               journalEntries={ this.state.searchQuery.length > 0 ? this.executeSearch() : this.state.journalEntries }
             />
             <i className={ this.state.entryFormHidden ? 'fa fa-times' : 'fa fa-times show'} onClick={ this.toggleFormState }></i>
-            { !this.state.entryFormHidden &&
-              <EntryForm
-                handleSave = { this.handleSave }
-                selectedEntry = { this.findEntry(this.state.selectedEntryId) }
-              />
-            }
           </div>
           { this.state.isLoading && <Loader /> }
-          <Modal 
-            className='user-modal'
-            contentLabel='User Modal'
-            isOpen={ this.state.modalIsOpen }
-            onRequestClose= {this.closeModal }
-            overlayClassName='modal-overlay'
-          >
-            <h1>Welcome Back!</h1>
-            <div className='input-group'>
-              <i className='fa fa-user'></i>
-              <input
-                onChange={ this.handleChange }
-                name='username'
-                placeholder='Username'
-                type='text'
-              />
-            </div>
-            <div className='input-group'>
-              <i className='fa fa-lock'></i>
-              <input
-                onChange={ this.handleChange }
-                name='password'
-                placeholder='Password'
-                type='password'
-              />
-            </div>
-            <div className='modal-actions'>
-              <button className='cancel' onClick={ () => this.closeModal() }>Cancel</button>
-              <button className='login' onClick={ () => this.login(this.state.username, this.state.password) }>Log In</button>
-            </div>
-          </Modal>
+          <EntryFormModal
+            entryFormHidden={ this.state.entryFormHidden }
+            handleSave={ this.handleSave }
+            selectedEntry={ this.findEntry(this.state.selectedEntryId) }
+            toggleFormState={ this.toggleFormState }
+          />
+          <LoginModal 
+            closeModal={ this.closeModal }
+            handleChange={ this.handleChange }
+            login={ this.login }
+            modalIsOpen={ this.state.modalIsOpen }
+            password={ this.state.password }
+            username={ this.state.username }
+          />
         </div>
       </div>
     )

@@ -3,31 +3,28 @@
   display: flex;
   justify-content: center;
   margin: 24px 0;
-  padding: 0 8px;
-}
-.search-container > input {
-  border: none;
-  border-bottom: 1px solid gray;
-  font-size: 1rem;
-  font-weight: 600;
-  height: 16px;
-  padding: 8px 4px;
-  width: 90%;
-}
-.search-container > input:focus {
-  outline: none;
-}
-.search-container > .fa {
-  background-color: white;
-  color: gray;
-  margin-left: -16px;
-  margin-bottom: 8px;
-  transition: all 0.1s ease;
-  -webkit-text-stroke: 1px white;
-}
-.search-container > i:hover {
-  color: black;
-  cursor: pointer;
-}
-.search-container > input:focus::-webkit-input-placeholder { color:transparent; }
-.search-container > input:focus:-moz-placeholder { color:transparent; }
+  padding: 0 8px; }
+  .search-container input {
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 1rem;
+    font-weight: 600;
+    height: 16px;
+    padding: 8px 4px;
+    width: 90%; }
+  .search-container input:focus {
+    outline: none; }
+  .search-container input:focus::-webkit-input-placeholder {
+    color: transparent; }
+  .search-container input:focus:-moz-placeholder {
+    color: transparent; }
+  .search-container .fa {
+    background-color: white;
+    color: gray;
+    margin-left: -16px;
+    margin-bottom: 8px;
+    transition: all 0.1s ease;
+    -webkit-text-stroke: 1px white; }
+  .search-container i:hover {
+    color: black;
+    cursor: pointer; }

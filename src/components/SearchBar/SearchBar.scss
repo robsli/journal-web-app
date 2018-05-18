@@ -1,0 +1,36 @@
+.search-container {
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+  padding: 0 8px;
+
+  input {
+    border: none;
+    border-bottom: 1px solid gray;
+    font-size: 1rem;
+    font-weight: 600;
+    height: 16px;
+    padding: 8px 4px;
+    width: 90%;
+  }
+  input:focus {
+    outline: none;
+  }
+  input:focus::-webkit-input-placeholder { color:transparent; }
+  input:focus:-moz-placeholder { color:transparent; }
+
+  .fa {
+    background-color: white;
+    color: gray;
+    margin-left: -16px;
+    margin-bottom: 8px;
+    transition: all 0.1s ease;
+    -webkit-text-stroke: 1px white;
+  }
+
+  i:hover {
+    color: black;
+    cursor: pointer;
+  }
+}

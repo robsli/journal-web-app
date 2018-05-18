@@ -7,47 +7,56 @@
   padding: 8px 0;
   position: fixed;
   width: 100%;
-  background: #2d3436; }
-  .header h1 {
+
+  background: #2d3436;
+
+  h1 {
     padding-left: 20px;
+  
     color: white;
     font-size: 1.2rem;
     font-weight: 800;
-    text-align: left; }
+    text-align: left;
+  }
+}
 
 .header-actions, .header > span {
   display: flex;
   margin: 0 16px;
+
   color: white;
   font-size: 1rem;
-  font-weight: 600; }
-
+  font-weight: 600;
+}
 .logout {
   border: none;
+  
   background: none;
   color: white;
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 400;
   outline: none;
-  transition: all 200ms ease; }
-
+  transition: all 200ms ease;
+}
 .logout:hover {
-  text-decoration: underline; }
-
+  text-decoration: underline;
+}
 .header-actions > button {
   border: 2px solid white;
   border-radius: 8px;
   height: 28px;
   margin: 0 8px;
   width: 80px;
+
   background: #2d3436;
   color: white;
   font-size: 0.8rem;
   font-weight: 400;
   outline: none;
-  transition: all 100ms ease-in; }
-
+  transition: all 100ms ease-in
+}
 .header-actions > button:hover {
   background: white;
-  color: black; }
+  color: black;
+}
