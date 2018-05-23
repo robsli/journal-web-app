@@ -1,6 +1,7 @@
 import { configure, mount, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import React from 'react'
+import Modal from 'react-modal'
 import renderer from 'react-test-renderer'
 
 import EntriesApi from '../../api/entriesApi'
@@ -17,36 +18,44 @@ describe('<JournalPage /> component', () => {
   beforeEach(() => {
     initialState = {
       entryFormHidden: true,
+      isAuthenticated: false,
+      isLoading: true,
       journalEntries: [
         { _id: 1, name: 'Entry 1', createdDate: new Date('2018-01-01'), notes: 'Entry 1 notes' },
-        { _id: 2, name: 'Entry 2', createdDate: new Date('2018-02-02'), notes: 'Entry 2 notes' }
+        { _id: 2, name: 'Entry 2', createdDate: new Date('2018-02-02'), notes: 'Entry 2 notes' },
+        { _id: 3, name: 'New entry', createDate: new Date('2018-03-03'), notes: 'This is a new entry.'}
       ],
-      searchQuery: '',
-      selectedEntryId: ''
-    }
-    journalPage = shallow(<JournalPage />)
-  })
-
-  it('calls the EntriesApi correctly on load and accurately updates the state', async () => {
-    // Arrange
-    journalPage.setState(initialState)
-
-    // Act
-    await journalPage.instance().componentDidMount()
-    journalPage.update()
-
-    // Assert
-    expect(journalPage.state()).toEqual({
-      entryFormHidden: true,
-      journalEntries: [
-        { _id: 1, name: 'Entry 1', createdDate: new Date('2018-01-01'), notes: 'Entry 1 notes' },
-        { _id: 2, name: 'Entry 2', createdDate: new Date('2018-02-02'), notes: 'Entry 2 notes' }
-      ],
+      modalIsOpen: false,
       password: '',
       searchQuery: '',
       selectedEntryId: '',
       username: ''
-    })
+    }
+    journalPage = shallow(<JournalPage />)
+    Modal.setAppElement(journalPage)
+  })
+
+  it('closes the modal when closeModal() is called', () => {
+    // Arrange
+    initialState.modalIsOpen = true
+    journalPage.setState(initialState)
+
+    // Act
+    journalPage.instance().closeModal()
+    
+    // Assert
+    expect(journalPage.state().modalIsOpen).toEqual(false)
+  })
+
+  it('calls the EntriesApi correctly on load and accurately updates the state', () => {
+    // Arrange
+    journalPage.setState(initialState)
+
+    // Act
+    journalPage.instance().componentDidMount()
+
+    // Assert
+    expect(journalPage.state()).toEqual(initialState)
   })
 
   it('opens the add entry form when user clicks the "+" button', () => {
@@ -93,7 +102,7 @@ describe('<JournalPage /> component', () => {
     expect(journalPage.state().searchQuery).toBe('')
   })
 
-  it('opens entry form and passes correct information to EntryForm component when handleUpdate is called', () => {
+  it('opens entry form modal and passes correct information to EntryForm component when handleUpdate is called', () => {
     // Arrange
     journalPage.setState(initialState)
 

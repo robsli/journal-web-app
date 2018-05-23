@@ -2,44 +2,55 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: lightgray; }
 
+  background-color: lightgray;
+}
 .journal-app {
   display: flex;
   flex-direction: column;
   width: 80vw;
   margin: 16px auto;
   padding-top: 48px;
-  background-color: white;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.24); }
 
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.24);
+}
 .body {
   display: flex;
   flex-direction: row;
   padding: 0 16px;
-  position: relative; }
-  .body .fa {
+  position: relative;
+
+  .fa {
     border: 0;
     border-radius: 50%;
-    color: #616161;
+    color: rgb(97, 97, 97);
     cursor: pointer;
     font-size: 2rem;
     left: 24px;
     position: absolute;
     top: 16px;
     width: 2rem;
+  
     transform: rotate(45deg);
     transition: all 0.1s ease;
     text-align: center;
-    -webkit-text-stroke: 4px white; }
-  .body .fa.show {
-    transform: rotate(180deg); }
-  .body .fa:hover {
-    color: black; }
+    -webkit-text-stroke: 4px white;
+  }
+  .fa.show {
+    transform: rotate(180deg);
+  }
+  .fa:hover {
+    color: black;
+  }
+}
 
 @media (max-width: 599px) {
   .journal-app {
     margin: 0;
-    width: 100%; }
+    width: 100%;
+  }
   .body {
-    flex-direction: column; } }
+    flex-direction: column;
+  }
+}

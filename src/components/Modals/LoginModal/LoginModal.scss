@@ -17,7 +17,7 @@
   height: 400px;
   width: 350px;
   position: absolute;
-  top: 10vw;
+  top: 100px;
   
   background-color: white;
   box-shadow: 0 10px 20px rgba(0,0,0,0.24), 0 8px 8px rgba(0,0,0,0.32);
@@ -65,6 +65,9 @@
     cursor: pointer;
     outline: none;
     transition: all 200ms ease-out;
+  }
+  .cancel {
+    background-color: white;
   }
   .cancel:hover {
     font-weight: 600;

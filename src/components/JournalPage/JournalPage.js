@@ -33,7 +33,7 @@ class JournalPage extends React.Component {
     this.handleDelete = this.handleDelete.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
     this.handleSave = this.handleSave.bind(this)
-    this.loadingTime = 800
+    this.loadingTime = 600
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
     this.openModal = this.openModal.bind(this)
