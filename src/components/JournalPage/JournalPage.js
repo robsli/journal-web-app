@@ -5,6 +5,7 @@ import EntriesApi from '../../api/entriesApi'
 import Header from '../Common/Header/Header'
 import formatDate from '../Common/FormatDate'
 import Loader from '../Common/Loader/Loader'
+import SortOptions from '../Common/SortOptions'
 import EntryFormModal from '../Modals/EntryFormModal/EntryFormModal'
 import JournalEntries from '../JournalEntries/JournalEntries'
 import LoginModal from '../Modals/LoginModal/LoginModal'
@@ -24,6 +25,7 @@ class JournalPage extends React.Component {
       password: '',
       searchQuery: '',
       selectedEntryId: '',
+      sortOrder: SortOptions.default,
       username: ''
     }
     this.closeModal = this.closeModal.bind(this)
@@ -32,6 +34,7 @@ class JournalPage extends React.Component {
     this.handleClearSearch = this.handleClearSearch.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
+    this.handleUpdateSort = this.handleUpdateSort.bind(this)
     this.handleSave = this.handleSave.bind(this)
     this.loadingTime = 600
     this.login = this.login.bind(this)
@@ -170,6 +173,13 @@ class JournalPage extends React.Component {
     }))
   }
 
+  handleUpdateSort(event) {
+    const newSort = event.target.value
+    this.setState(prevState => ({
+      sortOrder: newSort
+    }))
+  }
+
   login(username, password) {
     const credentials = { username, password }
     AuthApi.login(credentials)
@@ -233,12 +243,15 @@ class JournalPage extends React.Component {
           />
           <div className='body'>
             <JournalEntries
+              entryFormHidden={ this.state.entryFormHidden }
               formatDate={ formatDate }
               handleDelete={ this.handleDelete }
               handleUpdate={ this.handleUpdate }
               journalEntries={ this.state.searchQuery.length > 0 ? this.executeSearch() : this.state.journalEntries }
+              sortOrder={ this.state.sortOrder }
+              toggleFormState={ this.toggleFormState }
+              updateSort={ this.handleUpdateSort }
             />
-            <i className={ this.state.entryFormHidden ? 'fa fa-times' : 'fa fa-times show'} onClick={ this.toggleFormState }></i>
           </div>
           { this.state.isLoading && <Loader /> }
           <EntryFormModal

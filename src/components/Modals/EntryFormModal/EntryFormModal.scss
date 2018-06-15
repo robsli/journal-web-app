@@ -15,6 +15,10 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   outline: none;
 
+  @media (max-width: 599px) {
+    max-height: 480px;
+  }
+
   h2 {
     margin-top: 32px;
     width: 100%;

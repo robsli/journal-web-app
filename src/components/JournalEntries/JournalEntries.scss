@@ -5,41 +5,53 @@
   max-height: inherit;
   order: 1;
   padding: 16px 8px;
+  
   align-items: center;
-  overflow: scroll; }
-  .entry-list-component .entry-list-header {
+  overflow: scroll;
+
+  .entry-list-header {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    width: 100%; }
-    .entry-list-component .entry-list-header .fa {
+    width: 100%;
+
+    .fa {
       border: 0;
       border-radius: 50%;
-      color: #616161;
+      color: rgb(97, 97, 97);
       cursor: pointer;
       font-size: 2rem;
       width: 120px;
+    
       text-align: center;
       transform: translateX(-48px) rotate(45deg);
       transition: all 0.1s ease;
-      -webkit-text-stroke: 4px white; }
-    .entry-list-component .entry-list-header .fa.show {
-      transform: translateX(-48px) rotate(180deg); }
-    .entry-list-component .entry-list-header .fa:hover {
-      color: black; }
-    .entry-list-component .entry-list-header .entry-sort {
+      -webkit-text-stroke: 4px white;
+    }
+    .fa.show {
+      transform: translateX(-48px) rotate(180deg);
+    }
+    .fa:hover {
+      color: black;
+    }
+  
+    .entry-sort {
       border: none;
       border-radius: 0;
       height: 32px;
+      
       background: none;
-      outline: none; }
+      outline: none;
+    }
+  }
+}
 
 .entry-cards {
   border-top: 1px solid lightgray;
   flex-direction: column;
   overflow: scroll;
-  width: 100%; }
-
+  width: 100%;
+}
 .entry-card {
   border-bottom: 1px solid lightgray;
   box-sizing: border-box;
@@ -47,12 +59,13 @@
   flex-direction: column;
   flex-wrap: wrap;
   margin: 16px 0;
-  padding: 16px 12px; }
-
+  padding: 16px 12px;
+}
 .entry-card-heading {
   display: flex;
-  align-items: center; }
 
+  align-items: center;
+}
 .entry-name {
   max-width: 60%;
   padding-right: 8px;
@@ -60,47 +73,57 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
   font-size: 1.2em;
   font-weight: 600;
-  text-align: left; }
-
+  text-align: left;
+}
 .entry-date {
   flex: 5 1;
   min-width: 20%;
   padding-right: 8px;
+  
   color: gray;
   font-size: 0.6em;
-  text-align: left; }
-
+  text-align: left;
+}
 .entry-delete, .entry-update {
   margin-left: 16px;
+
   color: lightgray;
   font-size: 0.8em;
-  text-align: right; }
-
+  text-align: right;
+}
 .entry-delete:hover, .entry-update:hover {
   color: black;
-  cursor: pointer; }
-
+  cursor: pointer;
+}
 .entry-notes {
   margin-top: 20px;
   max-height: 100px;
+
   font-family: serif;
   font-size: 0.8em;
   font-weight: 200;
   text-align: left;
   text-overflow: ellipsis;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 @media (max-width: 599px) {
   .entry-card-heading {
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+  }
   .entry-name {
     margin-bottom: 4px;
     max-width: 100%;
-    width: 100%; }
+    width: 100%;
+  }
   .entry-date {
-    font-size: 0.8em; }
+    font-size: 0.8em;
+  }
   .entry-update, .entry-delete {
     color: black;
-    font-size: 0.8em; } }
+    font-size: 0.8em;
+  }
+}

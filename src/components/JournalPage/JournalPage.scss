@@ -20,29 +20,6 @@
   flex-direction: row;
   padding: 0 16px;
   position: relative;
-
-  .fa {
-    border: 0;
-    border-radius: 50%;
-    color: rgb(97, 97, 97);
-    cursor: pointer;
-    font-size: 2rem;
-    left: 24px;
-    position: absolute;
-    top: 16px;
-    width: 2rem;
-  
-    transform: rotate(45deg);
-    transition: all 0.1s ease;
-    text-align: center;
-    -webkit-text-stroke: 4px white;
-  }
-  .fa.show {
-    transform: rotate(180deg);
-  }
-  .fa:hover {
-    color: black;
-  }
 }
 
 @media (max-width: 599px) {
