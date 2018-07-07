@@ -66,6 +66,17 @@ class JournalPage extends React.Component {
     }, this.loadingTime)
   }
 
+  componentDidUpdate() {
+    const entryNotes = document.querySelectorAll('.entry-notes')
+    entryNotes.forEach((currVal) => {
+      if (currVal.scrollHeight > currVal.clientHeight) {
+        currVal.style.height = currVal.scrollHeight + "px"
+      } else {
+        currVal.style.height = currVal.clientHeight
+      }
+    })  
+  }
+
   closeModal() {
     this.setState(prevState => ({ modalIsOpen: false }))
   }

@@ -1,3 +1,5 @@
+@import '../../../../public/styles/colors';
+
 .entry-form-modal {
   align-items: flex-end;
   box-sizing: border-box;
@@ -23,7 +25,9 @@
     margin-top: 32px;
     width: 100%;
   
+    font-family: Helvetica, Futura, sans-serif;
     font-size: 1.4rem;
+    letter-spacing: 1px;
     text-align: center;
   }
   label {
@@ -34,15 +38,17 @@
   }
   textarea {
     border: 1px solid lightgray;
+    line-height: 18px;
     margin: 8px 0;
     min-height: 100px;
     padding: 16px 12px;
     resize: none;
     width: 100%;
   
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Futura, sans-serif;
     font-size: 1rem;
     font-weight: 400;
+    letter-spacing: 0.2px;
     outline: none;
   }
 
@@ -70,7 +76,7 @@
       height: 36px;
       margin: 8px;
 
-      background: rgb(80, 80, 80);
+      background: $primary-color;
       color: white;
       font-size: 0.8rem;
     }
@@ -110,6 +116,7 @@
     
     box-shadow: none;
     font-size: 1rem;
+    letter-spacing: 0.5px;
     outline: none;
   }
   input:focus {

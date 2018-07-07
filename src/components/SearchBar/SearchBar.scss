@@ -1,3 +1,6 @@
+@import '../../../public/styles/colors';
+@import '../../../public/styles/fonts';
+
 .search-container {
   align-items: flex-end;
   display: flex;
@@ -7,30 +10,35 @@
 
   input {
     border: none;
-    border-bottom: 1px solid gray;
-    font-size: 1rem;
-    font-weight: 600;
     height: 16px;
     padding: 8px 4px;
-    width: 90%;
+    width: 94%;
+
+    font-family: $primary-font-set;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: $body-letter-spacing;
   }
   input:focus {
+    border-bottom: 1px solid $secondary-color;
+
     outline: none;
+    transition: all ease-in-out 0.5s;
   }
   input:focus::-webkit-input-placeholder { color:transparent; }
   input:focus:-moz-placeholder { color:transparent; }
 
   .fa {
-    background-color: white;
-    color: gray;
+    background-color: $background-color;
+    color: $primary-color;
     margin-left: -16px;
     margin-bottom: 8px;
     transition: all 0.1s ease;
-    -webkit-text-stroke: 1px white;
+    -webkit-text-stroke: 1px $background-color;
   }
 
   i:hover {
-    color: black;
+    color: $secondary-color;
     cursor: pointer;
   }
 }

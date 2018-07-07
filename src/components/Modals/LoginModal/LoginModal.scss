@@ -1,3 +1,5 @@
+$primary-color: #00A8C4;
+
 .modal-overlay {
   bottom: 0;
   display: flex;
@@ -31,7 +33,7 @@
 
   .input-group {
     align-items: center;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $primary-color;
     display: flex;
     flex-direction: row;
     height: 24px;
@@ -77,12 +79,12 @@
     height: 36px;
     margin: 8px;
 
-    background: rgb(80, 80, 80);
+    background: $primary-color;
     font-size: 0.8rem;
     color: white;
   }
   .login:hover {
-    background: rgb(60, 60, 60);
+    background: $primary-color;
   
     transform: scale(1.05);
   }

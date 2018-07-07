@@ -17,7 +17,8 @@ function Header({
           <button onClick={ () => console.log('Thanks for your interest! We\'ll let you know when we\'re out of beta.') } disabled>Sign Up</button>
         </div>
         :
-        <span>{ username }
+        <span>
+          { username }
           <button className='logout' onClick={ () => logout() }>logout</button>
         </span>
       }

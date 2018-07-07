@@ -14,7 +14,7 @@ function JournalEntries(
     toggleFormState,
     updateSort
   }) {
-  
+
   function sortEntries(entries) {
     switch (sortOrder) {
       case SortOptions.date.newToOld:
@@ -62,7 +62,7 @@ function JournalEntries(
             <span className='entry-update' onClick={ (e) => handleUpdate(entry._id, e) }>update</span>
             <span className='entry-delete' onClick={ (e) => handleDelete(entry._id, e) }>delete</span>
           </div>
-          <span className='entry-notes'>{entry.notes}</span>
+          <textarea className='entry-notes' readOnly value={entry.notes}></textarea>
         </div>
       )
     })
@@ -71,7 +71,9 @@ function JournalEntries(
   return (
     <div className='entry-list-component'>
       <div className='entry-list-header'>
-        <i className={ entryFormHidden ? 'fa fa-times' : 'fa fa-times show'} onClick={ toggleFormState }></i>
+        <button className='add-entry-button' onClick={ toggleFormState }>
+          <i className={ entryFormHidden ? 'fa fa-times' : 'fa fa-times show'}></i>
+        </button>
         <h2>Journal Entries</h2>
         <select className='entry-sort' value={ sortOrder } onChange={ updateSort }>
           <option value={ SortOptions.date.newToOld }>Date: New to Old</option>

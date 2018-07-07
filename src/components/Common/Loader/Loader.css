@@ -12,7 +12,7 @@
 
 .loader {
   border: 3px solid transparent;
-  border-top-color: #606060;
+  border-top-color: #006678;
   border-radius: 50%;
   height: 120px;
   width: 120px;
@@ -22,7 +22,7 @@
 .loader::before {
   border: 3px solid transparent;
   border-radius: 50%;
-  border-top-color: #a0a0a0;
+  border-top-color: #00A8C4;
   bottom: 5px;
   content: '';
   left: 5px;
@@ -34,7 +34,7 @@
 .loader::after {
   border: 3px solid transparent;
   border-radius: 50%;
-  border-top-color: #dcdcdc;
+  border-top-color: #90BDC4;
   bottom: 15px;
   content: '';
   left: 15px;

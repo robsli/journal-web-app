@@ -1,3 +1,6 @@
+@import '../../../../public/styles/colors';
+@import '../../../../public/styles/fonts';
+
 .loader-wrapper {
   align-items: center;
   align-self: center;
@@ -15,7 +18,7 @@
 }
 .loader {
   border: 3px solid transparent;
-  border-top-color: #606060;
+  border-top-color: $secondary-color;
   border-radius: 50%;
   height: 120px;
   width: 120px;
@@ -26,7 +29,7 @@
 .loader::before {
   border: 3px solid transparent;
   border-radius: 50%;
-  border-top-color: #a0a0a0;
+  border-top-color: $primary-color;
   bottom: 5px;
   content: '';
   left: 5px;
@@ -39,7 +42,7 @@
 .loader::after {
   border: 3px solid transparent;
   border-radius: 50%;
-  border-top-color: #dcdcdc;
+  border-top-color: $tertiary-color;
   bottom: 15px;
   content: '';
   left: 15px;
